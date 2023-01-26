@@ -9,7 +9,8 @@ spec:
       app: convtemp
     template:
       metadata:
-        label: convtemp
+        labels:
+          app: convtemp
       spec:
         containers:
           name: conversaotemperatura
