@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: convtemp-pod
+spec:
+  containers:
+    name: conversaotemperatura
+    image: raphaelcrejo/jde-conversao-temperatura:latest
+    env:
+      name: PORT
+      value: 8080
+    ports:
+      containerPort: 8080

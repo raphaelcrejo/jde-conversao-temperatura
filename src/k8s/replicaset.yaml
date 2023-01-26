@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: convtemp-rplst
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: convtemp
+    template:
+      metadata:
+        label: convtemp
+      spec:
+        containers:
+          name: conversaotemperatura
+          image: raphaelcrejo/jde-conversao-temperatura:latest
+          env:
+            name: PORT
+            value: 8080
+          ports:
+            containerPort: 8080
