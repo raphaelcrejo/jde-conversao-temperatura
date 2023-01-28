@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: convtemp-dplmnt
+  labels:
+    app: convtemp
 spec:
   replicas: 3
   selector:
@@ -13,13 +15,13 @@ spec:
           app: convtemp
       spec:
         containers:
-          name: conversaotemperatura
+        - name: conversaotemperatura
           image: raphaelcrejo/jde-conversao-temperatura:latest
           env:
-            name: PORT
-            value: 8080
+          - name: PORT
+            value: "8080"
           ports:
-            containerPort: 8080
+          - containerPort: 8080
 
 ---
 
@@ -30,8 +32,8 @@ metadata:
 spec:
   selector:
     app: convtemp
-    ports:
-      port: 8080
-      protocol: TCP
-      nodePort: 30000
-    type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    nodePort: 30000
+  type: NodePort
